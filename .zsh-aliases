@@ -105,3 +105,9 @@ alias dp="docker pull"
 alias dr="docker run"
 alias ds="docker-sync"
 alias dv="docker volume"
+
+##############################################################################
+# Bundle alias
+alias bi="bundle install"
+alias be="bundle exec"
+alias bu="bundle update"
