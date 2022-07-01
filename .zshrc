@@ -40,6 +40,33 @@ export LC_ALL="en_US.UTF-8"
 setopt no_share_history
 
 ###############################################################################
-# loading aliases and personal config
+# Loading aliases
 [ -s "$HOME/.zsh-aliases" ] && source "$HOME/.zsh-aliases"
-[ -s "$HOME/.zsh-localconfig" ] && source "$HOME/.zsh-localconfig"
+
+export GPG_TTY=$(tty)
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+
+# Homebrew executables
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+
+# Setup Golang
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+# Setup NVM
+source "$HOME/.nvm/nvm.sh"
+
+# Setup RVM
+source "$HOME/.rvm/scripts/rvm"
+
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
