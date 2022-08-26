@@ -35,7 +35,7 @@ alias py2="python2"
 alias py3="python3"
 alias py="python3"
 alias qq="exit"
-alias quit="pkill -9 -e"
+alias quit="pkill -SIGKILL"
 alias rb="ruby"
 alias reload="exec $SHELL"
 alias rmr="rm -r"
@@ -45,6 +45,13 @@ alias tmxu="tmux"
 alias treea="tree -a"
 alias vim="nvim"
 alias xclip="xclip -selection clipboard"
+
+##############################################################################
+# Tmux & Tmuxinator aliases
+alias tm="tmux"
+alias tma="tmux attach"
+alias tmd="tmux detach"
+
 
 ##############################################################################
 # Git alias
@@ -79,23 +86,32 @@ alias glgg="git log --graph --decorate --oneline"
 alias glgga="git log --graph --decorate --oneline --all"
 
 alias gm="git merge"
+alias gma="git merge --abort"
+alias gmc="git merge --continue"
 
 function gpull() {
-  if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
-    git pull origin "${*}"
-  else
-    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
-    git pull origin "${b:=$1}"
-  fi
+  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
+  git pull origin "${b:=$1}"
+}
+
+function gpullf() {
+  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
+  git pull --rebase=interactive origin "${b:=$1}"
+}
+
+function gpushff() {
+  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
+  git push --force origin "${b:=$1}"
+}
+
+function gpushf() {
+  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
+  git push --force-with-lease origin "${b:=$1}"
 }
 
 function gpush() {
-  if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
-    git push origin "${*}"
-  else
-    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
-    git push origin "${b:=$1}"
-  fi
+  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
+  git push origin "${b:=$1}"
 }
 
 alias grb="git rebase"
@@ -117,14 +133,22 @@ alias gst="git stash"
 alias gsta="git stash apply"
 alias gstc="git stash clear"
 alias gstd="git stash drop"
+alias gstp="git stash pop"
+
+alias gsh="git show"
+alias gshq="git show --quiet"
+
+alias gcp="git cherry-pick"
+alias gcpa="git cherry-pick --abort"
+alias gcpc="git cherry-pick --continue"
 
 alias gsub="git submodule"
 alias gsuba="git submodule add"
 alias gsubi="git submodule init"
 
+
 ##############################################################################
 # Docker alias
-
 alias db="docker build"
 alias dc="docker container"
 alias de="docker exec"
@@ -134,6 +158,7 @@ alias dp="docker pull"
 alias dr="docker run"
 alias ds="docker-sync"
 alias dv="docker volume"
+
 
 ##############################################################################
 # Bundle alias

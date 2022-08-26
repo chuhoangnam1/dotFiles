@@ -29,6 +29,7 @@ docker-sync.yml
 docker-compose-dev.yml
 
 .idea
+.vscode
 
 # Other file type for backing up things
 *.bak
