@@ -23,19 +23,19 @@ export GPG_TTY=$(tty)
 
 export LANG='en_US.UTF-8'
 export LANGUAGE='en_US.UTF-8'
-export LC_CTYPE="en_US.UTF-8"
-export LC_NUMERIC="en_US.UTF-8"
-export LC_TIME="en_GB.UTF-8"
-export LC_COLLATE="en_US.UTF-8"
-export LC_MONETARY="en_US.UTF-8"
-export LC_MESSAGES="en_US.UTF-8"
-export LC_PAPER="en_US.UTF-8"
-export LC_NAME="en_US.UTF-8"
-export LC_ADDRESS="en_US.UTF-8"
-export LC_TELEPHONE="en_US.UTF-8"
-export LC_MEASUREMENT="en_US.UTF-8"
-export LC_IDENTIFICATION="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
+export LC_CTYPE='en_US.UTF-8'
+export LC_NUMERIC='en_US.UTF-8'
+export LC_TIME='en_GB.UTF-8'
+export LC_COLLATE='en_US.UTF-8'
+export LC_MONETARY='en_US.UTF-8'
+export LC_MESSAGES='en_US.UTF-8'
+export LC_PAPER='en_US.UTF-8'
+export LC_NAME='en_US.UTF-8'
+export LC_ADDRESS='en_US.UTF-8'
+export LC_TELEPHONE='en_US.UTF-8'
+export LC_MEASUREMENT='en_US.UTF-8'
+export LC_IDENTIFICATION='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
 
 setopt no_share_history
 
@@ -45,6 +45,7 @@ setopt no_share_history
 
 export GPG_TTY=$(tty)
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
 
 if type brew &>/dev/null
 then
@@ -54,19 +55,45 @@ then
   compinit
 fi
 
+###############################################################################
+# Specific bindkey for better iTerm2 - ZSH - Neovim integration
+# bindkey '^A' beginning-of-line
+# bindkey '^E' end-of-line
+# bindkey '^B' backward-word
+# bindkey '^F' forward-word
+# bindkey '^U' kill-whole-line
+# bindkey '^W' backward-kill-word
+
+###############################################################################
 # Homebrew executables
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
 
-# Setup Golang
-export GOPATH=$HOME/.go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+###############################################################################
+# Setup flutter
+export PATH="$PATH:$HOME/.flutter/bin"
+export PATH="$PATH:$HOME/.android/cmdline-tools/latest/bin"
 
-# Setup NVM
+###############################################################################
+# Setup golang
+export GOPATH="$HOME/.go"
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+
+###############################################################################
+# Setup nvm
+alias load-nvm='source "$HOME/.nvm/nvm.sh"'
 source "$HOME/.nvm/nvm.sh"
 
-# Setup RVM
-source "$HOME/.rvm/scripts/rvm"
+###############################################################################
+# Setup rbenv
+alias load-rbenv='export PATH="$HOME/.rbenv/bin:$PATH" && eval "$(rbenv init - zsh)"'
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init - zsh)"
 
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+###############################################################################
+# Setup pyenv
+alias load-pyenv='export PYENV_ROOT="$HOME/.pyenv" && export PATH="$PYENV_ROOT/bin:$PATH" && eval "$(pyenv init - zsh)"'
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
