@@ -51,7 +51,7 @@ alias xclip="xclip -selection clipboard"
 alias tm="tmux"
 alias tma="tmux attach"
 alias tmd="tmux detach"
-
+alias tmm="tmuxinator"
 
 ##############################################################################
 # Git alias
