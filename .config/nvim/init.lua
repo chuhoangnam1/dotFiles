@@ -54,6 +54,8 @@ require('packer').startup(function(use)
   use 'windwp/nvim-autopairs'
 
   use { 'neoclide/coc.nvim', branch = 'release' }
+
+  use 'dbeniamine/cheat.sh-vim'
 end)
 
 -- Set colorscheme
