@@ -286,7 +286,7 @@ vim.g.polyglot_disabled = {
 
 -- vim-ruby configurations
 vim.cmd [[
-  let ruby_foldable_groups = 'if def do begin case for { [ % # <<'
+  let ruby_foldable_groups = 'def'
 ]]
 
 require("nvim-autopairs").setup {}
@@ -329,7 +329,6 @@ require('vim.treesitter.query').set_query(
   [[
     [
       (method)
-      (do_block)
     ] @fold
   ]]
 )
