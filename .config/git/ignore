@@ -31,6 +31,10 @@ docker-compose-dev.yml
 .idea
 .vscode
 
+.env
+.env.*
+!.env.example
+
 # Other file type for backing up things
 *.bak
 *.orig
