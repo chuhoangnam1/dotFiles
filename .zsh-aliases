@@ -76,6 +76,8 @@ alias gcob="git checkout -b"
 
 alias gd="git diff"
 alias gds="git diff --staged"
+alias gdst="git diff --stat"
+alias gdsst="git diff --staged --stat"
 
 alias gf="git fetch"
 
