@@ -48,6 +48,9 @@ require('packer').startup(function(use)
   use 'styled-components/vim-styled-components'
   use 'jparise/vim-graphql'
 
+  -- Golang development plugins
+  use 'fatih/vim-go'
+
   -- Generic development plugins
   use 'sheerun/vim-polyglot'
   use 'tpope/vim-endwise'
