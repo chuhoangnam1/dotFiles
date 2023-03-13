@@ -266,8 +266,9 @@ vim.g.NERDTreeCaseSensitiveSort = 1
 vim.g.NERDTreeNatureSort = 1
 vim.g.NERDTreeQuitOnOpen = 1
 vim.g.NERDTreeShowHidden = 1
+vim.g.NERDTreeShowLineNumbers=1
 vim.g.NERDTreeWinPos = 'left'
-vim.g.NERDTreeWinSize = 36
+vim.g.NERDTreeWinSize = 64
 vim.g.NERDTreeIgnore = {
   '.git',
   '.idea',
