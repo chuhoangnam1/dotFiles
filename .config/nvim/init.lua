@@ -409,7 +409,7 @@ vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>FZF<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>GFiles<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fa', '<cmd>Ag<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>ft', '<cmd>CocList outline<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>fT', '<cmd>CocList symbols<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fy', '<cmd>CocList symbols<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fm', '<cmd>Marks<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fs', '<cmd>write<CR>', { noremap = true })
 
