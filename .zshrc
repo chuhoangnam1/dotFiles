@@ -92,6 +92,13 @@ alias load-pyenv='export PYENV_ROOT="$HOME/.pyenv" && export PATH="$PYENV_ROOT/b
 ###############################################################################
 # Setup golang
 alias load-gvm='source "$HOME/.gvm/scripts/gvm"'
-export GOPATH="$HOME/.go"
-export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
+# export GOPATH="$HOME/.go"
+# export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
 # source "$HOME/.gvm/scripts/gvm"
+
+###############################################################################
+# Setup flutter
+alias load-flutter='export PATH="$HOME/Applications/flutter/bin:$PATH" && export PATH="$HOME/Library/Android/sdk/cmdline-tools/bin:$PATH" && export ANDROID_HOME="$HOME/Library/Android/sdk"'
+# export PATH="$HOME/Applications/flutter/bin:$PATH"
+# export PATH="$HOME/Library/Android/sdk/cmdline-tools/bin:$PATH"
+# export ANDROID_HOME="$HOME/Library/Android/sdk"
