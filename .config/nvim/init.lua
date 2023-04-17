@@ -327,7 +327,7 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
-require('vim.treesitter.query').set_query(
+require('vim.treesitter.query').set(
   'ruby',
   'folds',
   [[
