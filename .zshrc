@@ -69,6 +69,7 @@ fi
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"
 
 ###############################################################################
 # Setup nvm
