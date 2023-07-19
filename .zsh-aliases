@@ -46,6 +46,15 @@ alias treea="tree -a"
 alias vim="nvim"
 alias xclip="xclip -selection clipboard"
 
+alias config-nvim="cd ~/.config/nvim/ && nvim -S"
+alias config-tmux="nvim ~/.tmux.conf"
+alias config-tmuxinator="cd ~/.config/tmuxinator/ && nvim -S"
+alias config-zsh="nvim ~/.zshrc"
+alias config-zsh-alias="nvim ~/.zsh-aliases"
+alias config-zsh-aliases="nvim ~/.zsh-aliases"
+
+alias restart-gpg="gpgconf --kill gpg-agent && gpg-connect-agent reloadagent /bye"
+
 ##############################################################################
 # Tmux & Tmuxinator aliases
 alias tm="tmux"
