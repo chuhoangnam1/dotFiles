@@ -24,3 +24,5 @@ email = chuhoangnam1@gmail.com
 	newHighlight = green bold 22
 [commit]
 	gpgSign = true
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
