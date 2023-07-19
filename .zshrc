@@ -43,10 +43,14 @@ setopt no_share_history
 # Loading aliases
 [ -s "$HOME/.zsh-aliases" ] && source "$HOME/.zsh-aliases"
 
+###############################################################################
+# Setup GPG
 export GPG_TTY=$(tty)
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent
 
+###############################################################################
+# Import zsh command suggestions
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
@@ -56,49 +60,48 @@ then
 fi
 
 ###############################################################################
-# Specific bindkey for better iTerm2 - ZSH - Neovim integration
-# bindkey '^A' beginning-of-line
-# bindkey '^E' end-of-line
-# bindkey '^B' backward-word
-# bindkey '^F' forward-word
-# bindkey '^U' kill-whole-line
-# bindkey '^W' backward-kill-word
-
-###############################################################################
 # Homebrew executables
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"
 
+export PATH="$PATH:$HOME/Applications/bin"
+export PATH="$PATH:$HOME/.local/bin"
+
+export DISABLE_SPRING=true
+
 ###############################################################################
-# Setup nvm
-alias load-nvm='source "$HOME/.nvm/nvm.sh"'
-# source "$HOME/.nvm/nvm.sh"
+# Setup gcloud
+if [ -f '/Users/chuhoangnam/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/chuhoangnam/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/chuhoangnam/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/chuhoangnam/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 ###############################################################################
 # Setup rbenv
-alias load-rbenv='export PATH="$HOME/.rbenv/bin:$PATH" && eval "$(rbenv init - zsh)"'
-# export PATH="$HOME/.rbenv/bin:$PATH"
-# eval "$(rbenv init - zsh)"
+export LDFLAGS="-L/opt/homebrew/opt/libffi/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
+eval "$($HOME/.rbenv/bin/rbenv init - zsh)"
+
+###############################################################################
+# Setup nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion" 
 
 ###############################################################################
 # Setup pyenv
-alias load-pyenv='export PYENV_ROOT="$HOME/.pyenv" && export PATH="$PYENV_ROOT/bin:$PATH" && eval "$(pyenv init - zsh)"'
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init - zsh)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
 
 ###############################################################################
 # Setup golang
-alias load-gvm='source "$HOME/.gvm/scripts/gvm"'
-# export GOPATH="$HOME/.go"
-# export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
-# source "$HOME/.gvm/scripts/gvm"
+export GOPATH="$HOME/Applications/go"
+export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
 
 ###############################################################################
 # Setup flutter
-alias load-flutter='export PATH="$HOME/Applications/flutter/bin:$PATH" && export PATH="$HOME/Library/Android/sdk/cmdline-tools/bin:$PATH" && export ANDROID_HOME="$HOME/Library/Android/sdk"'
-# export PATH="$HOME/Applications/flutter/bin:$PATH"
-# export PATH="$HOME/Library/Android/sdk/cmdline-tools/bin:$PATH"
-# export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$HOME/Applications/flutter/bin:$PATH"
+export PATH="$HOME/Library/Android/sdk/cmdline-tools/bin:$PATH"
+export ANDROID_HOME="$HOME/Library/Android/sdk"
