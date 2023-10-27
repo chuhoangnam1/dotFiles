@@ -36,10 +36,12 @@ docker-compose-dev.yml
 !.env.example
 
 # Other file type for backing up things
+*_bak.*
 *.bak
 *.orig
 *.lock
 *.temp
+*.iml
 
 
 ## Apple MacOS Generic Ignore Files
