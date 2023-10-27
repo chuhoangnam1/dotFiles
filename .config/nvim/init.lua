@@ -101,7 +101,11 @@ vim.opt.smartcase = true
 
 -- Decrease update time
 vim.opt.updatetime = 250
-vim.opt.signcolumn = 'yes'
+
+-- Sign column
+vim.opt.signcolumn = 'no'
+
+vim.opt.numberwidth = 5
 
 -- Set completeopt to have a better completion experience
 vim.opt.completeopt = 'menuone,noselect'
