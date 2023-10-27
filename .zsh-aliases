@@ -88,7 +88,10 @@ alias gds="git diff --staged"
 alias gdst="git diff --stat"
 alias gdsst="git diff --staged --stat"
 
-alias gf="git fetch"
+function gf() {
+  [[ "$#" != 1 ]] && local remote="origin"
+  git fetch "${remote:=$1}"
+}
 
 alias gl="git log"
 alias glg="git log --graph --decorate"
@@ -101,28 +104,28 @@ alias gma="git merge --abort"
 alias gmc="git merge --continue"
 
 function gpull() {
-  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
-  git pull origin "${b:=$1}"
+  [[ "$#" != 1 ]] && local remote="origin" && local branch="$(git_current_branch)"
+  git pull "${remote:=$1}" "${branch:=$2}"
 }
 
 function gpullf() {
-  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
-  git pull --rebase=interactive origin "${b:=$1}"
+  [[ "$#" != 1 ]] && local remote="origin" && local branch="$(git_current_branch)"
+  git pull --rebase=interactive "${remote:=$1}" "${branch:=$2}"
 }
 
 function gpushff() {
-  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
-  git push --force origin "${b:=$1}"
+  [[ "$#" != 1 ]] && local remote="origin" && localbranch="$(git_current_branch)"
+  git push --force "${remote:=$1}" "${branch:=$2}"
 }
 
 function gpushf() {
-  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
-  git push --force-with-lease origin "${b:=$1}"
+  [[ "$#" != 1 ]] && local remote="origin" && local branch="$(git_current_branch)"
+  git push --force-with-lease "${r:=$1}" "${b:=$2}"
 }
 
 function gpush() {
-  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
-  git push origin "${b:=$1}"
+  [[ "$#" != 1 ]] && local remote="origin" && local branch="$(git_current_branch)"
+  git push "${remote:=$1}" "${branch:=$2}"
 }
 
 alias grb="git rebase"
@@ -137,6 +140,9 @@ alias grmt="git remote"
 
 alias grs="git reset"
 alias grsh="git reset --hard"
+
+alias grst="git restore"
+alias grsts="git restore --staged"
 
 alias gs="git status"
 
