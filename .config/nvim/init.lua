@@ -64,6 +64,10 @@ vim.opt.termguicolors = true
 vim.cmd [[
   let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
   colorscheme gruvbox
+
+  let g:gruvbox_bold = 1
+  let g:gruvbox_italic = 1
+  let g:gruvbox_contrast_light = 1
 ]]
 
 -- Set basic eyecandy settings
@@ -155,6 +159,14 @@ vim.opt.foldmethod = 'syntax'
 vim.opt.exrc = true
 vim.opt.secure = true
 
+vim.cmd [[
+  command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
+]]
+
+vim.cmd [[
+  autocmd FileType make set autoindent noexpandtab tabstop=4 shiftwidth=4
+]]
+
 -- Return to last edit position when opening files
 vim.cmd [[
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -215,27 +227,27 @@ vim.cmd [[
   endfunction
 ]]
 
-vim.cmd [[
-  function! ToggleList(bufname, pfx)
-    let buflist = GetBufferList()
-    for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
-      if bufwinnr(bufnum) != -1
-        exec(a:pfx.'close')
-        return
-      endif
-    endfor
-    if a:pfx == 'l' && len(getloclist(0)) == 0
-        echohl ErrorMsg
-        echo "location list is empty."
-        return
-    endif
-    let winnr = winnr()
-    exec(a:pfx.'open')
-    if winnr() != winnr
-      wincmd p
-    endif
-  endfunction
-]]
+-- vim.cmd [[
+--   function! ToggleList(bufname, pfx)
+--     let buflist = GetBufferList()
+--     for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+--       if bufwinnr(bufnum) != -1
+--         exec(a:pfx.'close')
+--         return
+--       endif
+--     endfor
+--     if a:pfx == 'l' && len(getloclist(0)) == 0
+--         echohl ErrorMsg
+--         echo "location list is empty."
+--         return
+--     endif
+--     let winnr = winnr()
+--     exec(a:pfx.'open')
+--     if winnr() != winnr
+--       wincmd p
+--     endif
+--   endfunction
+-- ]]
 
 vim.cmd [[
   command! TrimWhiteSpace call TrimWhiteSpace()
@@ -282,7 +294,7 @@ vim.cmd [[
   command! -bang -nargs=* Ag
     \ call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
-  let $FZF_DEFAULT_COMMAND = 'ag --hidden --skip-vcs-ignores -l -g ""'
+  let $FZF_DEFAULT_COMMAND = 'ag --hidden --skip-vcs-ignores --follow -l -g ""'
 ]]
 
 -- vim-polyglot configurations
@@ -363,9 +375,11 @@ vim.cmd [[
 
   " GoTo code navigation.
   nnoremap gd <Plug>(coc-definition)
+  nnoremap gD <Plug>(coc-declaration)
   nnoremap gy <Plug>(coc-type-definition)
   nnoremap gi <Plug>(coc-implementation)
-  nnoremap gr <Plug>(coc-references)
+  nnoremap gr <Plug>(coc-references-used)
+  nnoremap gR <Plug>(coc-references)
 
   " Use K to show documentation in preview window.
   nnoremap <silent> K :call ShowDocumentation()<CR>
@@ -407,13 +421,18 @@ vim.api.nvim_set_keymap('n', '<C-l>', '<cmd>Buffers<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-n>', '<cmd>NERDTreeToggle<CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>fd', '<cmd>Bclose<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>FZF<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>GFiles<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>fa', '<cmd>Ag<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>ft', '<cmd>CocList outline<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>fy', '<cmd>CocList symbols<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>fm', '<cmd>Marks<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fc', '<cmd>Bclose<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fs', '<cmd>write<CR>', { noremap = true })
+
+vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>FZF<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fF', '<cmd>GFiles<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fa', '<cmd>Ag<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>ft', '<cmd>Tags<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fT', '<cmd>BTags<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fm', '<cmd>Marks<CR>', { noremap = true })
+
+vim.api.nvim_set_keymap('n', '<leader>tt', '<cmd>CocList outline<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>ty', '<cmd>CocList symbols<CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>QQ', '<cmd>qa!<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>qq', '<cmd>qa<CR>', { noremap = true })
@@ -423,6 +442,7 @@ vim.api.nvim_set_keymap('n', '<leader>ss', '<cmd>setlocal spell!<CR>', { noremap
 
 vim.api.nvim_set_keymap('n', '<leader>w=', '<C-w>=', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>wc', '<C-w>c', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>wd', '<C-w>c', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>wh', '<C-w>h', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>wj', '<C-w>j', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>wk', '<C-w>k', { noremap = true })
@@ -435,7 +455,7 @@ vim.api.nvim_set_keymap('n', '<leader>tc', '<cmd>tabclose<CR>', { noremap = true
 vim.api.nvim_set_keymap('n', '<leader>td', '<cmd>Bclose<CR><cmd>tabclose<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>tk', '<cmd>tabnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>tj', '<cmd>tabprevious<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>tn', '<cmd>tabnew<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>tn', '<cmd>$tabnew<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>ts', '<cmd>tab split<CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>nc', '<cmd>NERDTreeClose<CR>', { noremap = true })
