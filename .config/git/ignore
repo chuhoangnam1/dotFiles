@@ -37,6 +37,7 @@ docker-compose-dev.yml
 
 # Other file type for backing up things
 *_bak.*
+*.bak.*
 *.bak
 *.orig
 *.lock
