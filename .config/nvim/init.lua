@@ -49,7 +49,7 @@ require('packer').startup(function(use)
   use 'jparise/vim-graphql'
 
   -- Golang development plugins
-  use 'fatih/vim-go'
+  -- use 'fatih/vim-go'
 
   -- Generic development plugins
   use 'sheerun/vim-polyglot'
@@ -57,8 +57,6 @@ require('packer').startup(function(use)
   use 'windwp/nvim-autopairs'
 
   use { 'neoclide/coc.nvim', branch = 'release' }
-
-  use 'dbeniamine/cheat.sh-vim'
 end)
 
 -- Set colorscheme
