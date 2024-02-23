@@ -104,27 +104,32 @@ alias gma="git merge --abort"
 alias gmc="git merge --continue"
 
 function gpull() {
-  [[ "$#" != 1 ]] && local remote="origin" && local branch="$(git_current_branch)"
+  [[ "$#" == 0 ]] && local remote="origin" && local branch="$(git_current_branch)"
+  [[ "$#" == 1 ]] && local branch="$(git_current_branch)"
   git pull "${remote:=$1}" "${branch:=$2}"
 }
 
 function gpullf() {
-  [[ "$#" != 1 ]] && local remote="origin" && local branch="$(git_current_branch)"
+  [[ "$#" == 0 ]] && local remote="origin" && local branch="$(git_current_branch)"
+  [[ "$#" == 1 ]] && local branch="$(git_current_branch)"
   git pull --rebase=interactive "${remote:=$1}" "${branch:=$2}"
 }
 
 function gpushff() {
-  [[ "$#" != 1 ]] && local remote="origin" && localbranch="$(git_current_branch)"
+  [[ "$#" == 0 ]] && local remote="origin" && local branch="$(git_current_branch)"
+  [[ "$#" == 1 ]] && local branch="$(git_current_branch)"
   git push --force "${remote:=$1}" "${branch:=$2}"
 }
 
 function gpushf() {
-  [[ "$#" != 1 ]] && local remote="origin" && local branch="$(git_current_branch)"
-  git push --force-with-lease "${r:=$1}" "${b:=$2}"
+  [[ "$#" == 0 ]] && local remote="origin" && local branch="$(git_current_branch)"
+  [[ "$#" == 1 ]] && local branch="$(git_current_branch)"
+  git push --force-with-lease "${remote:=$1}" "${branch:=$2}"
 }
 
 function gpush() {
-  [[ "$#" != 1 ]] && local remote="origin" && local branch="$(git_current_branch)"
+  [[ "$#" == 0 ]] && local remote="origin" && local branch="$(git_current_branch)"
+  [[ "$#" == 1 ]] && local branch="$(git_current_branch)"
   git push "${remote:=$1}" "${branch:=$2}"
 }
 
