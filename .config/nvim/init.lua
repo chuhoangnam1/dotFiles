@@ -49,7 +49,7 @@ require('packer').startup(function(use)
   use 'jparise/vim-graphql'
 
   -- Golang development plugins
-  -- use 'fatih/vim-go'
+  use { 'fatih/vim-go', run = ':GoUpdateBinaries' }
 
   -- Generic development plugins
   use 'sheerun/vim-polyglot'
@@ -164,7 +164,8 @@ vim.cmd [[
 ]]
 
 vim.cmd [[
-  autocmd FileType make set autoindent noexpandtab tabstop=4 shiftwidth=4
+  autocmd FileType make set autoindent noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
+  autocmd FileType proto set autoindent noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
 ]]
 
 -- Return to last edit position when opening files
@@ -257,6 +258,11 @@ vim.cmd [[
   endfunction
 ]]
 
+vim.cmd [[
+  let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+  let g:EditorConfig_disable_rules = ['max_line_length']
+]]
+
 -- Airline configurations
 vim.g.airline_powerline_fonts = 0
 vim.g.airline_section_b = ""
@@ -311,7 +317,7 @@ require("nvim-autopairs").setup {}
 
 -- nvim-treesitter
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "javascript", "ruby", "go" },
+  ensure_installed = { "javascript", "ruby", "go", "yaml" },
   auto_install = true,
   ignore_install = {},
   indent = {
@@ -427,9 +433,10 @@ vim.api.nvim_set_keymap('n', '<leader>fs', '<cmd>write<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>FZF<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fF', '<cmd>GFiles<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fa', '<cmd>Ag<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>ft', '<cmd>Tags<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>fT', '<cmd>BTags<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>ft', '<cmd>BTags<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fT', '<cmd>Tags<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fm', '<cmd>Marks<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fj', '<cmd>Jumps<CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>tt', '<cmd>CocList outline<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>ty', '<cmd>CocList symbols<CR>', { noremap = true })
@@ -486,11 +493,13 @@ vim.api.nvim_set_keymap('n', ']l', '<cmd>lnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', ']q', '<cmd>cnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', ']t', '<cmd>tnext<CR>', { noremap = true })
 
-vim.api.nvim_set_keymap('n', '*', '<cmd>keepjumps normal! mi*`i<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '*', '<cmd>keepjumps normal! mig*`i<CR>', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '*', '<cmd>keepjumps normal! mi*`i<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', 'g*', '<cmd>keepjumps normal! mig*`i<CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>/', '<cmd>noh<CR>', { noremap = true })
 
+vim.api.nvim_set_keymap('n', '<leader>yl', '<cmd>let @* = join([expand(\'%\'),  line(".")], \':\')<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>yy', '"+yy', { noremap = true })
 vim.api.nvim_set_keymap('v', '<leader>yy', '"+y', { noremap = true })
 
