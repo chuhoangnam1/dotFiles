@@ -94,6 +94,7 @@ function gf() {
 }
 
 alias gl="git log"
+alias glo="git log --pretty=format:'%C(yellow)%h|%Cred%ad|%Cblue%an|%Cgreen%d %Creset%s' --date=short"
 alias glg="git log --graph --decorate"
 alias glga="git log --graph --decorate --all"
 alias glgg="git log --graph --decorate --oneline"
