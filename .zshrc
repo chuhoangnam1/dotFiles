@@ -81,47 +81,36 @@ export PATH="$PATH:$HOME/.local/bin"
 export DISABLE_SPRING=true
 
 ###############################################################################
-# Setup gcloud
-if [ -f '/Users/chuhoangnam/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/chuhoangnam/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '/Users/chuhoangnam/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/chuhoangnam/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
-###############################################################################
 # Setup rbenv
 export LDFLAGS="-L/opt/homebrew/opt/libffi/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
 eval "$($HOME/.rbenv/bin/rbenv init - zsh)"
-alias load-rbenv='export LDFLAGS="-L/opt/homebrew/opt/libffi/lib" && export CPPFLAGS="-I/opt/homebrew/opt/libffi/include" && export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig" && eval "$($HOME/.rbenv/bin/rbenv init - zsh)"'
+# alias load-rbenv='export LDFLAGS="-L/opt/homebrew/opt/libffi/lib" && export CPPFLAGS="-I/opt/homebrew/opt/libffi/include" && export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig" && eval "$($HOME/.rbenv/bin/rbenv init - zsh)"'
 
 ###############################################################################
 # Setup nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
-alias load-nvm='export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh" && [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"'
+# alias load-nvm='export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh" && [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"'
 
 ###############################################################################
 # Setup pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
-alias load-pyenv='export PYENV_ROOT="$HOME/.pyenv" && export PATH="$PYENV_ROOT/bin:$PATH" && eval "$(pyenv init - zsh)"'
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init - zsh)"
+# alias load-pyenv='export PYENV_ROOT="$HOME/.pyenv" && export PATH="$PYENV_ROOT/bin:$PATH" && eval "$(pyenv init - zsh)"'
 
 ###############################################################################
 # Setup golang
 export GOPATH="$HOME/Applications/go"
 export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
-
-###############################################################################
-# Setup flutter
-export PATH="$HOME/Applications/flutter/bin:$PATH"
-export PATH="$HOME/Library/Android/sdk/cmdline-tools/bin:$PATH"
-export ANDROID_HOME="$HOME/Library/Android/sdk"
-
-
+[[ -s "/Users/chuhoangnam/.gvm/scripts/gvm" ]] && source "/Users/chuhoangnam/.gvm/scripts/gvm"
 
 ###############################################################################
 # ZSH debugging
 if [ -n "${ZSH_DEBUGRC+1}" ]; then
     zprof
 fi
+
