@@ -106,7 +106,7 @@ export NVM_DIR="$HOME/.nvm"
 # Setup golang
 export GOPATH="$HOME/Applications/go"
 export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
-[[ -s "/Users/chuhoangnam/.gvm/scripts/gvm" ]] && source "/Users/chuhoangnam/.gvm/scripts/gvm"
+# [[ -s "/Users/chuhoangnam/.gvm/scripts/gvm" ]] && source "/Users/chuhoangnam/.gvm/scripts/gvm"
 
 ###############################################################################
 # ZSH debugging
