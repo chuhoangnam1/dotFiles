@@ -56,7 +56,18 @@ require('packer').startup(function(use)
   use 'tpope/vim-endwise'
   use 'windwp/nvim-autopairs'
 
-  use { 'neoclide/coc.nvim', branch = 'release' }
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
+  use 'neovim/nvim-lspconfig'
+
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
+
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/vim-vsnip'
 end)
 
 -- Set colorscheme
@@ -154,7 +165,8 @@ vim.opt.showmatch = true
 vim.opt.matchtime = 2
 
 vim.opt.foldenable = true
-vim.opt.foldmethod = 'syntax'
+vim.opt.foldnestmax = 3
+-- vim.opt.foldmethod = 'syntax'
 
 vim.opt.exrc = true
 vim.opt.secure = true
@@ -164,8 +176,10 @@ vim.cmd [[
 ]]
 
 vim.cmd [[
+  autocmd FileType help set relativenumber
   autocmd FileType make set autoindent noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
   autocmd FileType proto set autoindent noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
+  autocmd FileType ruby set iskeyword+=?
 ]]
 
 -- Return to last edit position when opening files
@@ -227,28 +241,6 @@ vim.cmd [[
     return buflist
   endfunction
 ]]
-
--- vim.cmd [[
---   function! ToggleList(bufname, pfx)
---     let buflist = GetBufferList()
---     for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
---       if bufwinnr(bufnum) != -1
---         exec(a:pfx.'close')
---         return
---       endif
---     endfor
---     if a:pfx == 'l' && len(getloclist(0)) == 0
---         echohl ErrorMsg
---         echo "location list is empty."
---         return
---     endif
---     let winnr = winnr()
---     exec(a:pfx.'open')
---     if winnr() != winnr
---       wincmd p
---     endif
---   endfunction
--- ]]
 
 vim.cmd [[
   command! TrimWhiteSpace call TrimWhiteSpace()
@@ -313,13 +305,21 @@ vim.cmd [[
   let ruby_foldable_groups = 'def'
 ]]
 
+-- vim-go configurations
+vim.cmd [[
+  let g:go_list_autoclose = 0
+
+  autocmd FileType go nnoremap gI :GoImplements<CR>:lopen<CR>
+  autocmd FileType go nnoremap gR :GoCallers<CR>:lopen<CR>
+]]
+
 require("nvim-autopairs").setup {}
 
 -- nvim-treesitter
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "javascript", "ruby", "go", "yaml" },
+  ensure_installed = "all",
   auto_install = true,
-  ignore_install = {},
+  ignore_install = { "wing" },
   indent = {
     enable = false
   },
@@ -347,12 +347,26 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+-- https://github.com/nvim-treesitter/nvim-treesitter/blob/master/queries/ruby/folds.scm
 require('vim.treesitter.query').set(
   'ruby',
   'folds',
   [[
     [
       (method)
+    ] @fold
+  ]]
+)
+
+-- https://github.com/nvim-treesitter/nvim-treesitter/blob/master/queries/go/folds.scm
+require('vim.treesitter.query').set(
+  'go',
+  'folds',
+  [[
+    [
+      (function_declaration)
+      (import_declaration)
+      (method_declaration)
     ] @fold
   ]]
 )
@@ -367,43 +381,78 @@ vim.api.nvim_create_autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEn
 })
 ---ENDWORKAROUND
 
--- coc-nvim configurations
-vim.api.nvim_set_keymap('i', '<expr>', '<CR>', { noremap = true })
-vim.cmd [[
-  " Make <CR> to accept selected completion item or notify coc.nvim to format
-  " <C-g>u breaks current undo, please make your own choice.
-  inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+-- mason & mason-lspconfig configuration
+require('mason').setup()
+require('mason-lspconfig').setup {
+  ensure_installed = {
+    'eslint',
+    'gopls',
+    'jsonls',
+    'tsserver',
+    'solargraph',
+    'rubocop'
+  },
+}
 
-  " Use `[g` and `]g` to navigate diagnostics
-  " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-  nmap [g <Plug>(coc-diagnostic-prev)
-  nmap ]g <Plug>(coc-diagnostic-next)
+-- nvim-lspconfig configruration
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local lspconfig = require 'lspconfig'
+local on_attach = function(_, bufnr)
+  -- vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  " GoTo code navigation.
-  nnoremap gd <Plug>(coc-definition)
-  nnoremap gD <Plug>(coc-declaration)
-  nnoremap gy <Plug>(coc-type-definition)
-  nnoremap gi <Plug>(coc-implementation)
-  nnoremap gr <Plug>(coc-references-used)
-  nnoremap gR <Plug>(coc-references)
+  local opts = { buffer = bufnr, noremap = true, silent = true }
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+end
 
-  " Use K to show documentation in preview window.
-  nnoremap <silent> K :call ShowDocumentation()<CR>
+lspconfig.eslint.setup {
+  on_attach = on_attach(),
+  capabilities = capabilities,
+}
+lspconfig.gopls.setup {
+  on_attach = on_attach(),
+  capabilities = capabilities,
+}
+lspconfig.jsonls.setup {
+  on_attach = on_attach(),
+  capabilities = capabilities,
+}
+lspconfig.tsserver.setup {
+  on_attach = on_attach(),
+  capabilities = capabilities,
+}
+lspconfig.solargraph.setup {
+  on_attach = on_attach(),
+  capabilities = capabilities,
+}
+lspconfig.rubocop.setup {
+  on_attach = on_attach(),
+  capabilities = capabilities,
+}
 
-  function! ShowDocumentation()
-    if CocAction('hasProvider', 'hover')
-      call CocActionAsync('doHover')
-    else
-      call feedkeys('K', 'in')
-    endif
-  endfunction
-
-  " Highlight the symbol and its references when holding the cursor.
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-
-  " Symbol renaming.
-  nnoremap <leader>rn <Plug>(coc-rename)
-]]
+local cmp = require 'cmp'
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+  }),
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' },
+  },
+}
 
 -- Remap space as leader key
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true })
@@ -438,8 +487,8 @@ vim.api.nvim_set_keymap('n', '<leader>fT', '<cmd>Tags<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fm', '<cmd>Marks<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fj', '<cmd>Jumps<CR>', { noremap = true })
 
-vim.api.nvim_set_keymap('n', '<leader>tt', '<cmd>CocList outline<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>ty', '<cmd>CocList symbols<CR>', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>tt', '<cmd>CocList outline<CR>', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>ty', '<cmd>CocList symbols<CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>QQ', '<cmd>qa!<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>qq', '<cmd>qa<CR>', { noremap = true })
@@ -492,21 +541,17 @@ vim.api.nvim_set_keymap('n', ']f', '<cmd>next<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', ']l', '<cmd>lnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', ']q', '<cmd>cnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', ']t', '<cmd>tnext<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '\\l', '<cmd>lclose<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '\\q', '<cmd>cclose<CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '*', '<cmd>keepjumps normal! mig*`i<CR>', { noremap = true })
--- vim.api.nvim_set_keymap('n', '*', '<cmd>keepjumps normal! mi*`i<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', 'g*', '<cmd>keepjumps normal! mig*`i<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'g*', '<cmd>keepjumps normal! mi*`i<CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>/', '<cmd>noh<CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>yl', '<cmd>let @* = join([expand(\'%\'),  line(".")], \':\')<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>yy', '"+yy', { noremap = true })
 vim.api.nvim_set_keymap('v', '<leader>yy', '"+y', { noremap = true })
-
-vim.api.nvim_set_keymap('v', '<leader>specf', '<cmd>call RunCurrentSpecFile()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('v', '<leader>specn', '<cmd>call RunNearestSpec()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('v', '<leader>specl', '<cmd>call RunLastSpec()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('v', '<leader>speca', '<cmd>call RunAllSpec()<CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('c', '<esc>b', '<S-Left>', { noremap = true })
 vim.api.nvim_set_keymap('c', '<esc>f', '<S-Right>', { noremap = true })
