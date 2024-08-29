@@ -98,7 +98,7 @@ export PATH="$RBENV_ROOT/bin:$PATH"
 # Setup pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-[ -s "$PYENV_ROOT/bin/pyenv" ] eval "$($PYENV_ROOT/bin/pyenv init - zsh)"
+[ -s "$PYENV_ROOT/bin/pyenv" ] && eval "$($PYENV_ROOT/bin/pyenv init - zsh)"
 
 ###############################################################################
 # Setup golang
