@@ -54,12 +54,14 @@ alias config-zsh-aliases="nvim ~/.zsh-aliases"
 
 alias restart-gpg="gpgconf --kill gpg-agent && gpg-connect-agent reloadagent /bye"
 
+
 ##############################################################################
 # Tmux & Tmuxinator aliases
 alias tm="tmux"
 alias tma="tmux attach"
 alias tmd="tmux detach"
 alias tmm="tmuxinator"
+
 
 ##############################################################################
 # Git alias
@@ -180,6 +182,7 @@ alias dp="docker pull"
 alias dr="docker run"
 alias ds="docker-sync"
 alias dv="docker volume"
+alias dcp="docker compose"
 
 
 ##############################################################################
@@ -187,3 +190,20 @@ alias dv="docker volume"
 alias bi="bundle install"
 alias be="bundle exec"
 alias bu="bundle update"
+
+
+##############################################################################
+# Golang alias
+alias gomd="go mod init"
+alias gomdi="go mod init"
+alias gomdt="go mod tidy"
+alias gomdv="go mod vendor"
+
+alias gob="go build"
+alias gocl="go clean"
+alias gofmt="go fmt"
+alias gogen="go generate"
+alias goget="go get"
+alias goi="go install"
+alias gotest="go test"
+alias govet="go vet"

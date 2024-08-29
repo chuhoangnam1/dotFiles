@@ -6,7 +6,6 @@ fi
 # time ZSH_DEBUGRC=1 zsh -i -c exit
 
 
-
 ##############################################################################
 # Oh-My-ZSH configuration
 
@@ -54,63 +53,62 @@ setopt no_share_history
 
 ###############################################################################
 # Setup GPG
-export GPG_TTY=$(tty)
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
+if type gpgconf &> /dev/null
+then
+  export GPG_TTY=$(tty)
+  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+  gpgconf --launch gpg-agent
+fi
 
 ###############################################################################
-# Import zsh command suggestions
+# Homebrew configuration
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
   autoload -Uz compinit
   compinit
+
+  # Add homebrew executables to path
+  export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+  export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+  export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
+  export PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"
 fi
 
 ###############################################################################
-# Homebrew executables
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
-export PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"
-
+# Setup path for personal ~/Application/bin and ~/.local/bin
 export PATH="$PATH:$HOME/Applications/bin"
 export PATH="$PATH:$HOME/.local/bin"
-
-export DISABLE_SPRING=true
-
-###############################################################################
-# Setup rbenv
-export LDFLAGS="-L/opt/homebrew/opt/libffi/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
-eval "$($HOME/.rbenv/bin/rbenv init - zsh)"
-# alias load-rbenv='export LDFLAGS="-L/opt/homebrew/opt/libffi/lib" && export CPPFLAGS="-I/opt/homebrew/opt/libffi/include" && export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig" && eval "$($HOME/.rbenv/bin/rbenv init - zsh)"'
 
 ###############################################################################
 # Setup nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
-# alias load-nvm='export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh" && [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"'
+
+###############################################################################
+# Setup rbenv
+export RBENV_ROOT="$HOME/.rbenv"
+export PATH="$RBENV_ROOT/bin:$PATH"
+[ -s "$HOME/.rbenv/bin/rbenv" ] && eval "$($HOME/.rbenv/bin/rbenv init - zsh)"
 
 ###############################################################################
 # Setup pyenv
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init - zsh)"
-# alias load-pyenv='export PYENV_ROOT="$HOME/.pyenv" && export PATH="$PYENV_ROOT/bin:$PATH" && eval "$(pyenv init - zsh)"'
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+[ -s "$PYENV_ROOT/bin/pyenv" ] eval "$($PYENV_ROOT/bin/pyenv init - zsh)"
 
 ###############################################################################
 # Setup golang
 export GOPATH="$HOME/Applications/go"
 export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
-# [[ -s "/Users/chuhoangnam/.gvm/scripts/gvm" ]] && source "/Users/chuhoangnam/.gvm/scripts/gvm"
+[ -s "/Users/chuhoangnam/.gvm/scripts/gvm" ] && source "$HOME/.gvm/scripts/gvm"
 
 ###############################################################################
 # ZSH debugging
 if [ -n "${ZSH_DEBUGRC+1}" ]; then
     zprof
 fi
-
+###############################################################################
