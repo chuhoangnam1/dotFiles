@@ -1,3 +1,6 @@
+# Set default dotFiles directory
+export DOTFILES_DIR="$HOME/.dotFiles"
+
 # Homebrew shellenv
 [ -s "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
