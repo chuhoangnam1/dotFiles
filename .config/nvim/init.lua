@@ -405,15 +405,13 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+  vim.keymap.set('n', 'gt', vim.lsp.buf.document_symbol, opts)
+  vim.keymap.set('n', 'gT', vim.lsp.buf.workspace_symbol, opts)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 end
 
-lspconfig.eslint.setup {
-  on_attach = on_attach(),
-  capabilities = capabilities,
-}
 lspconfig.gopls.setup {
   on_attach = on_attach(),
   capabilities = capabilities,
@@ -443,13 +441,14 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert({
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
+    ['<CR>'] = cmp.mapping.confirm({select = false}),
+    ['<C-e>'] = cmp.mapping.abort(),
   }),
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_document_symbol' },
+    { name = 'cmp-nvim-lsp-signature-help' },
+    { name = 'cmp-buffer' },
     { name = 'vsnip' },
   },
 }
@@ -473,22 +472,22 @@ vim.api.nvim_set_keymap('n', '<C-e>', '<cmd>e#<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-j>', '<cmd>tabprevious<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-k>', '<cmd>tabnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-l>', '<cmd>Buffers<CR>', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<C-l>', '<cmd>buffers<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-n>', '<cmd>NERDTreeToggle<CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>fd', '<cmd>Bclose<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fD', '<cmd>bufdo bd<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fc', '<cmd>Bclose<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fs', '<cmd>write<CR>', { noremap = true })
 
-vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>FZF<CR>', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>FZF<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Files<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fF', '<cmd>GFiles<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fa', '<cmd>Ag<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>ft', '<cmd>BTags<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fT', '<cmd>Tags<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fm', '<cmd>Marks<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fj', '<cmd>Jumps<CR>', { noremap = true })
-
--- vim.api.nvim_set_keymap('n', '<leader>tt', '<cmd>CocList outline<CR>', { noremap = true })
--- vim.api.nvim_set_keymap('n', '<leader>ty', '<cmd>CocList symbols<CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>QQ', '<cmd>qa!<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>qq', '<cmd>qa<CR>', { noremap = true })
@@ -531,12 +530,10 @@ vim.api.nvim_set_keymap('n', '<leader>cwd', '<cmd>lcd %:p:h<CR>', { noremap = tr
 vim.api.nvim_set_keymap('n', 'go', 'o<esc>', { noremap = true })
 vim.api.nvim_set_keymap('n', 'gO', 'O<esc>', { noremap = true })
 
-vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[f', '<cmd>previous<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[l', '<cmd>lprevious<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[q', '<cmd>cprevious<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '[t', '<cmd>tprevious<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', ']f', '<cmd>next<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', ']l', '<cmd>lnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', ']q', '<cmd>cnext<CR>', { noremap = true })
