@@ -1,0 +1,234 @@
+{
+  "description": "NamCH Personal Keymappings",
+  "manipulators": [
+    {
+      "description": "Map mouse-button4 to command + left_arrow",
+      "from": {
+        "pointing_button": "button4"
+      },
+      "to": [
+        {
+          "key_code": "left_arrow",
+          "modifiers": [
+            "left_command"
+          ]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "description": "Map mouse-button5 to command + right_arrow",
+      "from": {
+        "pointing_button": "button5"
+      },
+      "to": [
+        {
+          "key_code": "right_arrow",
+          "modifiers": [
+            "left_command"
+          ]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "description": "Map control+option+command + mouse-button4 to control+option+command + right_arrow",
+      "from": {
+        "modifiers": {
+          "mandatory": [
+            "left_control",
+            "left_option",
+            "left_command"
+          ]
+        },
+        "pointing_button": "button4"
+      },
+      "to": [
+        {
+          "key_code": "right_arrow",
+          "modifiers": [
+            "left_control",
+            "left_option",
+            "left_command"
+          ]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "description": "Map control+option+command + mouse-button5 to control+option+command + left_arrow",
+      "from": {
+        "modifiers": {
+          "mandatory": [
+            "left_control",
+            "left_option",
+            "left_command"
+          ]
+        },
+        "pointing_button": "button5"
+      },
+      "to": [
+        {
+          "key_code": "left_arrow",
+          "modifiers": [
+            "left_control",
+            "left_option",
+            "left_command"
+          ]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "description": "Map control+option+command + h to left_arrow",
+      "from": {
+        "key_code": "h",
+        "modifiers": {
+          "mandatory": [
+            "left_command",
+            "left_option",
+            "left_control"
+          ],
+          "optional": [
+            "any"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "left_arrow"
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "description": "Map control+option+command + j to down_arrow",
+      "from": {
+        "key_code": "j",
+        "modifiers": {
+          "mandatory": [
+            "left_command",
+            "left_option",
+            "left_control"
+          ],
+          "optional": [
+            "any"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "down_arrow"
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "description": "Map control+option+command + k to up_arrow",
+      "from": {
+        "key_code": "k",
+        "modifiers": {
+          "mandatory": [
+            "left_command",
+            "left_option",
+            "left_control"
+          ],
+          "optional": [
+            "any"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "up_arrow"
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "description": "Map control+option+command + l to right_arrow",
+      "from": {
+        "key_code": "l",
+        "modifiers": {
+          "mandatory": [
+            "left_command",
+            "left_option",
+            "left_control"
+          ],
+          "optional": [
+            "any"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "right_arrow"
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "description": "Map control + backspace to option + backspace",
+      "from": {
+        "key_code": "delete_or_backspace",
+        "modifiers": {
+          "mandatory": [
+            "left_control"
+          ],
+          "optional": [
+            "any"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "delete_or_backspace",
+          "modifiers": [
+            "left_option"
+          ]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "description": "Map control + left_arrow to option + left_arrow",
+      "from": {
+        "key_code": "left_arrow",
+        "modifiers": {
+          "mandatory": [
+            "left_control"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "left_arrow",
+          "modifiers": [
+            "left_option"
+          ]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "description": "Map control + right_arrow to option + right_arrow",
+      "from": {
+        "key_code": "right_arrow",
+        "modifiers": {
+          "mandatory": [
+            "left_control"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "right_arrow",
+          "modifiers": [
+            "left_option"
+          ]
+        }
+      ],
+      "type": "basic"
+    }
+  ]
+}
