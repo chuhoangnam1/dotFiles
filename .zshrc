@@ -52,6 +52,10 @@ setopt no_share_history
 [ -s "$HOME/.zsh-aliases" ] && source "$HOME/.zsh-aliases"
 
 ###############################################################################
+# Loading personal scripts
+[ -s "$HOME/.zsh-personal" ] && source "$HOME/.zsh-personal"
+
+###############################################################################
 # Setup GPG
 if type gpgconf &> /dev/null
 then
