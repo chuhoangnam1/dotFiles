@@ -1,0 +1,88 @@
+let mapleader=" "
+
+set scrolloff=10
+set relativenumber
+set showmode
+set showcmd
+set visualbell
+" set clipboard+=unnamed
+
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+set commentary
+set easymotion
+set highlightedyank
+set ideajoin
+set matchit
+set nerdtree
+set notimeout
+set sneak
+set surround
+set textobj-indent
+set vim-paragraph-motion
+" set which-key
+
+nnoremap <leader>reload :source ~/.ideavimrc<CR>
+
+nnoremap <leader><CR> :action FileStructurePopup<CR>
+
+nnoremap <C-a> gg<S-v>G
+vnoremap <C-a> gg<S-v>G
+
+nnoremap <C-c> <ESC>
+inoremap <C-c> <ESC>
+vnoremap <C-c> <ESC>
+
+nnoremap <C-j> :action PreviousTab<CR>
+nnoremap <C-k> :action NextTab<CR>
+
+nnoremap <C-o> :action Back<CR>
+nnoremap <C-i> :action Forward<CR>
+
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+
+nnoremap == :action ReformatCode<CR>
+vnoremap == :action ReformatCode<CR>
+nnoremap -- :action OptimizeImports<CR>
+vnoremap -- :action OptimizeImports<CR>
+
+vnoremap / :action Find<CR>
+nnoremap / :action Find<CR>
+nnoremap <leader>/ :noh<CR>
+vnoremap <leader>/ :noh<CR>
+
+nnoremap <leader>sort Vapk:sort<CR>
+
+nnoremap <leader>fs :action Save<CR>
+nnoremap <leader>fd :action CloseEditor<CR>
+nnoremap <leader>fu :action FindUsages<CR>
+nnoremap <leader>fb :action ToggleBreakpoint<CR>
+nnoremap <leader>ft :action FileStructurePopup<CR>
+
+nnoremap <leader>ws :action SplitVertically<CR>
+nnoremap <leader>wv :action SplitHorizontally<CR>
+nnoremap <leader>wc :action UnsplitAll<CR>
+
+nnoremap <leader>rc :action RunClass<CR>
+nnoremap <leader>rr :action ChooseRunConfiguration<CR>
+
+nnoremap <leader>ww :action HideAllWindows<CR>
+nnoremap <leader>ss :action SelectInProjectView<CR>
+
+nnoremap <leader>g, :action JumpToLastChange<CR>
+nnoremap <leader>g. :action JumpToNextChange<CR>
+nnoremap <leader>ge :action Generate<CR>
+nnoremap <leader>gf :action GotoFile<CR>
+nnoremap <leader>gr :action RecentFiles<CR>
+
+nnoremap <leader>gc :action GotoClass<CR>
+nnoremap <leader>gd :action GotoDeclaration<CR>
+nnoremap <leader>gi :action GotoImplementation<CR>
+nnoremap <leader>gs :action GotoSuperMethod<CR>
+nnoremap <leader>gt :action GotoTest<CR>
+
+packadd matchit
