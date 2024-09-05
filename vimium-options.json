@@ -1,0 +1,5 @@
+{
+  "settingsVersion": "2.1.2",
+  "keyMappings": "# Insert your preferred key mappings here.\nunmap x\nunmap X\nmap X removeTab\n\nunmap J\nmap <c-j> previousTab\nunmap K\nmap <c-k> nextTab\nunmap H\nmap <c-h> goBack\nunmap L\nmap <c-l> goForward",
+  "exclusionRules": []
+}
