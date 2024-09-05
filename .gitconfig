@@ -2,7 +2,6 @@
 [user]
 name = Chu Hoang Nam
 email = chuhoangnam1@gmail.com
-	signingkey = chuhoangnam1@gmail.com
 [color "status"]
 	changed = red normal bold
 	untracked = green normal
@@ -22,7 +21,5 @@ email = chuhoangnam1@gmail.com
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
-[commit]
-	gpgSign = true
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
