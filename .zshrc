@@ -27,8 +27,6 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR='nvim'
 export VISUAL='nvim'
 
-export GPG_TTY=$(tty)
-
 export LANG='en_US.UTF-8'
 export LANGUAGE='en_US.UTF-8'
 export LC_CTYPE='en_US.UTF-8'
@@ -54,16 +52,6 @@ setopt no_share_history
 ###############################################################################
 # Loading personal scripts
 [ -s "$HOME/.zsh-personal" ] && source "$HOME/.zsh-personal"
-
-###############################################################################
-# Setup GPG
-if type gpgconf &> /dev/null
-then
-  export GPG_TTY=$(tty)
-  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-
-  gpgconf --launch gpg-agent
-fi
 
 ###############################################################################
 # Homebrew configuration
