@@ -317,7 +317,7 @@ require("nvim-autopairs").setup {}
 
 -- nvim-treesitter
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
+  ensure_installed = "",
   auto_install = true,
   ignore_install = { "wing" },
   indent = {
