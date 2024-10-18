@@ -29,6 +29,8 @@ nnoremap <leader>reload :source ~/.ideavimrc<CR>
 
 nnoremap <leader><CR> :action FileStructurePopup<CR>
 
+nnoremap X :action CloseTab<CR>
+
 nnoremap <C-a> gg<S-v>G
 vnoremap <C-a> gg<S-v>G
 
