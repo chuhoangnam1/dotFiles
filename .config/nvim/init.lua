@@ -82,7 +82,7 @@ vim.cmd [[
 ]]
 
 -- Set basic eyecandy settings
-vim.opt.colorcolumn = '80'
+vim.opt.colorcolumn = '120'
 vim.opt.cursorline = true
 vim.opt.scrolloff = 5
 
@@ -317,7 +317,7 @@ require("nvim-autopairs").setup {}
 
 -- nvim-treesitter
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "",
+  ensure_installed = { "bash", "css", "csv", "dockerfile", "go", "gomod", "gosum", "html", "javascript", "json", "json5", "make", "markdown", "python", "ruby", "scss", "typescript", },
   auto_install = true,
   ignore_install = { "wing" },
   indent = {
@@ -420,7 +420,7 @@ lspconfig.jsonls.setup {
   on_attach = on_attach(),
   capabilities = capabilities,
 }
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
   on_attach = on_attach(),
   capabilities = capabilities,
 }
