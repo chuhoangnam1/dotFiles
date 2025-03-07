@@ -3,3 +3,6 @@ ehthumbs.db
 Icon?
 Thumbs.db
 *.DS_Store
+.config/karabiner/automatic_backups/
+.gnupg/pubring.kbx
+.gnupg/trustdb.gpg
