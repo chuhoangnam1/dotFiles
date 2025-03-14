@@ -3676,11 +3676,11 @@
 	<key>SwitchWindowModifier</key>
 	<integer>9</integer>
 	<key>TabStyleWithAutomaticOption</key>
-	<integer>6</integer>
+	<integer>4</integer>
 	<key>TerminalMargin</key>
 	<integer>0</integer>
 	<key>TerminalVMargin</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>TmuxVariableWindowSizesSupported</key>
 	<false/>
 	<key>ToolbeltTools</key>
