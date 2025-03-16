@@ -45,6 +45,8 @@ alias treea="tree -a"
 alias vim="nvim"
 alias xclip="xclip -selection clipboard"
 
+alias makel="make -f Makefile.local"
+
 alias config-nvim="cd ~/.config/nvim/ && nvim -S"
 alias config-tmux="nvim ~/.tmux.conf"
 alias config-tmuxinator="cd ~/.config/tmuxinator/ && nvim -S"

@@ -75,3 +75,4 @@ Temporary Items
 
 __debug_bin*
 debug.*
+Makefile.local
