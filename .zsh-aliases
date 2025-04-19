@@ -17,7 +17,7 @@ alias .....="cd ../../../.."
 alias ....="cd ../../.."
 alias ...="cd ../.."
 alias ..="cd .."
-alias ctags="ctags -R -a"
+alias ctags='[ -s "./.ignore" ] && ctags -R -a --exclude=@.ignore || ctags -R -a'
 alias dd="dd status='progress'"
 alias diff="colordiff"
 alias du="du -h -d1"
@@ -192,6 +192,7 @@ alias dcp="docker compose"
 alias bi="bundle install"
 alias be="bundle exec"
 alias bu="bundle update"
+alias bundlelocal="bundle config set --local path vendor/bundle"
 
 
 ##############################################################################
