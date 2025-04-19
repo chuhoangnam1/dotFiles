@@ -175,6 +175,7 @@ alias gsubi="git submodule init"
 
 ##############################################################################
 # Docker alias
+alias dat="docker attach --detach-keys=\"ctrl-x\""
 alias db="docker build"
 alias dc="docker container"
 alias de="docker exec"
