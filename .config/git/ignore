@@ -76,3 +76,6 @@ Temporary Items
 __debug_bin*
 debug.*
 Makefile.local
+.cursorignore
+.cursorrules
+vendor/bundle
