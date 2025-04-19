@@ -55,48 +55,56 @@ setopt no_share_history
 
 ###############################################################################
 # Homebrew configuration
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+# if type brew &>/dev/null
+# then
+#   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
-  autoload -Uz compinit
-  compinit
+#   autoload -Uz compinit
+#   compinit
 
-  # Add homebrew executables to path
-  export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-  export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-  export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
-  export PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"
-fi
+#   # Add homebrew executables to path
+#   # export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+#   # export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+#   # export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
+#   # export PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"
+# fi
 
 ###############################################################################
 # Setup path for personal ~/Application/bin and ~/.local/bin
 export PATH="$PATH:$HOME/Applications/bin"
 export PATH="$PATH:$HOME/.local/bin"
 
-###############################################################################
-# Setup nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
+################################################################################
+## Setup nvm
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+#[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
+
+################################################################################
+## Setup rbenv
+#export RBENV_ROOT="$HOME/.rbenv"
+#export PATH="$RBENV_ROOT/bin:$PATH"
+#[ -s "$HOME/.rbenv/bin/rbenv" ] && eval "$($HOME/.rbenv/bin/rbenv init - zsh)"
+
+################################################################################
+## Setup pyenv
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#[ -s "$PYENV_ROOT/bin/pyenv" ] && eval "$($PYENV_ROOT/bin/pyenv init - zsh)"
+
+################################################################################
+## Setup golang
+#export GOPATH="$HOME/Applications/go"
+#export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
+#[ -s "$HOME/.gvm/scripts/gvm" ] && source "$HOME/.gvm/scripts/gvm"
+
 
 ###############################################################################
-# Setup rbenv
-export RBENV_ROOT="$HOME/.rbenv"
-export PATH="$RBENV_ROOT/bin:$PATH"
-[ -s "$HOME/.rbenv/bin/rbenv" ] && eval "$($HOME/.rbenv/bin/rbenv init - zsh)"
+# Setup asdf for runtime version control
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
-###############################################################################
-# Setup pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-[ -s "$PYENV_ROOT/bin/pyenv" ] && eval "$($PYENV_ROOT/bin/pyenv init - zsh)"
-
-###############################################################################
-# Setup golang
-export GOPATH="$HOME/Applications/go"
-export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
-[ -s "/Users/chuhoangnam/.gvm/scripts/gvm" ] && source "$HOME/.gvm/scripts/gvm"
+export ASDF_GOROOT="$HOME/.asdf/plugins/golang/set-env.zsh"
+[ -s "$ASDF_GOROOT" ] && source "$ASDF_GOROOT"
 
 ###############################################################################
 # ZSH debugging
