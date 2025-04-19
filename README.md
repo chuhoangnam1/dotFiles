@@ -11,3 +11,15 @@ defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 defaults write com.apple.dock no-bouncing -bool TRUE;
 ```
 
+## Change macOS's dock auto-hide delay
+```shell
+defaults write com.apple.dock autohide-delay -float 0;
+defaults write com.apple.dock autohide-time-modifier -int 0;
+killall Dock
+```
+
+## Restore macOS's dock auto-hide delay
+```shell
+defaults delete com.apple.Dock autohide-delay;
+killall Dock
+```
