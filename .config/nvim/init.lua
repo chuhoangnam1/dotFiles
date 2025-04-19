@@ -23,7 +23,6 @@ require('packer').startup(function(use)
   use { 'junegunn/fzf', run = function() vim.fn.execute('fzf#install') end }
   use 'junegunn/fzf.vim'
   use 'junegunn/vim-peekaboo'
-  use 'mattn/emmet-vim'
   use 'scrooloose/nerdtree'
   use 'tpope/vim-commentary'
   use 'tpope/vim-fugitive'
@@ -86,8 +85,8 @@ vim.opt.colorcolumn = '120'
 vim.opt.cursorline = true
 vim.opt.scrolloff = 5
 
-vim.opt.splitbelow = true
-vim.opt.splitright = true
+-- vim.opt.splitbelow = true
+-- vim.opt.splitright = true
 
 -- Disable spelling by default
 vim.opt.spell = false
@@ -181,6 +180,11 @@ vim.cmd [[
   autocmd FileType proto set autoindent noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
   autocmd FileType ruby set iskeyword+=?
 ]]
+
+vim.cmd [[
+  autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
+]]
+
 
 -- Return to last edit position when opening files
 vim.cmd [[
@@ -442,7 +446,7 @@ cmp.setup {
   },
   mapping = cmp.mapping.preset.insert({
     ['<CR>'] = cmp.mapping.confirm({select = false}),
-    ['<C-e>'] = cmp.mapping.abort(),
+    ['<C-c>'] = cmp.mapping.abort(),
   }),
   sources = {
     { name = 'nvim_lsp' },
@@ -468,12 +472,16 @@ vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true,
 vim.api.nvim_set_keymap('n', 'S', 'i<CR><esc>', { noremap = true })
 vim.api.nvim_set_keymap('', '<C-c>', '<esc>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-c>', '<cmd>e!<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-e>', '<cmd>e#<CR>', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<C-r>', '<cmd>e#<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-j>', '<cmd>tabprevious<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-k>', '<cmd>tabnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-l>', '<cmd>Buffers<CR>', { noremap = true })
 -- vim.api.nvim_set_keymap('n', '<C-l>', '<cmd>buffers<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-n>', '<cmd>NERDTreeToggle<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-n>', '<cmd>NERDTreeToggle<CR>', { noremap = true })
+
+vim.api.nvim_set_keymap('n', '<C-e>', '5<C-e>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-y>', '5<C-y>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '<leader>fd', '<cmd>Bclose<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fD', '<cmd>bufdo bd<CR>', { noremap = true })
