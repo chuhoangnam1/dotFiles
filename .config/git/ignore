@@ -79,3 +79,5 @@ Makefile.local
 .cursorignore
 .cursorrules
 vendor/bundle
+
+.tool-versions
