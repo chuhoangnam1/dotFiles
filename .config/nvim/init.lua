@@ -321,9 +321,27 @@ require("nvim-autopairs").setup {}
 
 -- nvim-treesitter
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "bash", "css", "csv", "dockerfile", "go", "gomod", "gosum", "html", "javascript", "json", "json5", "make", "markdown", "python", "ruby", "scss", "typescript", },
+  ensure_installed = {
+    "bash",
+    "css",
+    "csv",
+    "dockerfile",
+    "go",
+    "gomod",
+    "gosum",
+    "html",
+    "javascript",
+    "json",
+    "json5",
+    "make",
+    "markdown",
+    "python",
+    "query",
+    "ruby",
+    "scss",
+    "typescript",
+  },
   auto_install = true,
-  ignore_install = { "wing" },
   indent = {
     enable = false
   },
@@ -392,7 +410,7 @@ require('mason-lspconfig').setup {
     'eslint',
     'gopls',
     'jsonls',
-    'tsserver',
+    'ts_ls',
     'solargraph',
     'rubocop'
   },
@@ -472,7 +490,7 @@ vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true,
 vim.api.nvim_set_keymap('n', 'S', 'i<CR><esc>', { noremap = true })
 vim.api.nvim_set_keymap('', '<C-c>', '<esc>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-c>', '<cmd>e!<CR>', { noremap = true })
--- vim.api.nvim_set_keymap('n', '<C-r>', '<cmd>e#<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-r>', '<cmd>e#<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-j>', '<cmd>tabprevious<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-k>', '<cmd>tabnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-l>', '<cmd>Buffers<CR>', { noremap = true })
