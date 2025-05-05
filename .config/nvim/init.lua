@@ -37,6 +37,8 @@ require('packer').startup(function(use)
   use 'thoughtbot/vim-rspec'
   use 'tpope/vim-rails'
   use 'vim-ruby/vim-ruby'
+  use 'kana/vim-textobj-user'
+  use 'rhysd/vim-textobj-ruby'
 
   -- Javscript/Typescript development plugins
   use 'pangloss/vim-javascript'
