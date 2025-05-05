@@ -29,6 +29,7 @@ require('packer').startup(function(use)
   use 'tpope/vim-obsession'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
+  use 'milkypostman/vim-togglelist'
 
   -- Neovim's Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
@@ -178,6 +179,7 @@ vim.cmd [[
   command! -nargs=+ F execute 'silent grep!' <q-args> | cw | redraw!
 ]]
 
+-- eyecandy for various filetypes
 vim.cmd [[
   autocmd FileType help set relativenumber
   autocmd FileType make set autoindent noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
@@ -185,8 +187,10 @@ vim.cmd [[
   autocmd FileType ruby set iskeyword+=?
 ]]
 
+-- quickfix window mappings
 vim.cmd [[
   autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
+  autocmd FileType qf nnoremap <ESC> :cclose<CR>
 ]]
 
 
@@ -568,8 +572,8 @@ vim.api.nvim_set_keymap('n', ']f', '<cmd>next<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', ']l', '<cmd>lnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', ']q', '<cmd>cnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', ']t', '<cmd>tnext<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '\\l', '<cmd>lclose<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '\\q', '<cmd>cclose<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '\\l', '<cmd>call ToggleQuickfixList()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '\\q', '<cmd>call ToggleLocationList()<CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', '*', '<cmd>keepjumps normal! mig*`i<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', 'g*', '<cmd>keepjumps normal! mi*`i<CR>', { noremap = true })
