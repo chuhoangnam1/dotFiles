@@ -457,6 +457,19 @@ lspconfig.ts_ls.setup {
 lspconfig.solargraph.setup {
   on_attach = on_attach(),
   capabilities = capabilities,
+  settings = {
+    solargraph = {
+      autoformat = false,
+      completion = true,
+      diagnostic = false,
+      diagnostics = true,
+      folding = true,
+      formatting = false,
+      references = true,
+      rename = true,
+      symbols = true
+    }
+  }
 }
 lspconfig.rubocop.setup {
   on_attach = on_attach(),
