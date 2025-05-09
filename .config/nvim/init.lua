@@ -502,7 +502,7 @@ vim.api.nvim_set_keymap('n', '<C-r>', '<cmd>e#<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-j>', '<cmd>tabprevious<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-k>', '<cmd>tabnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-l>', '<cmd>Buffers<CR>', { noremap = true })
--- vim.api.nvim_set_keymap('n', '<C-l>', '<cmd>buffers<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-m>', '<cmd>Marks<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-n>', '<cmd>NERDTreeToggle<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-n>', '<cmd>NERDTreeToggle<CR>', { noremap = true })
 
