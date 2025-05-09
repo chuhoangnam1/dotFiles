@@ -2215,6 +2215,10 @@
 	<string>5CE870D7-A222-4C06-A174-043211DF7C24</string>
 	<key>DisableWindowSizeSnap</key>
 	<true/>
+	<key>EnableDivisionView</key>
+	<true/>
+	<key>EnableProxyIcon</key>
+	<false/>
 	<key>GlobalKeyMap</key>
 	<dict>
 		<key>0x2b-0x120000-0x18</key>
@@ -3130,6 +3134,8 @@
 			<false/>
 			<key>Shortcut</key>
 			<string></string>
+			<key>Show Mark Indicators</key>
+			<false/>
 			<key>Silence Bell</key>
 			<false/>
 			<key>Sync Title</key>
@@ -3140,6 +3146,8 @@
 			<string>xterm-256color</string>
 			<key>Transparency</key>
 			<real>0.0</real>
+			<key>Unicode Version</key>
+			<integer>9</integer>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -3599,6 +3607,8 @@
 			<false/>
 			<key>Shortcut</key>
 			<string></string>
+			<key>Show Mark Indicators</key>
+			<false/>
 			<key>Silence Bell</key>
 			<false/>
 			<key>Space</key>
@@ -3684,6 +3694,8 @@
 	<false/>
 	<key>StatusBarIcon</key>
 	<false/>
+	<key>StatusBarPosition</key>
+	<integer>0</integer>
 	<key>SwitchTabModifier</key>
 	<integer>9</integer>
 	<key>SwitchWindowModifier</key>
@@ -3693,7 +3705,7 @@
 	<key>TerminalMargin</key>
 	<integer>0</integer>
 	<key>TerminalVMargin</key>
-	<integer>0</integer>
+	<integer>2</integer>
 	<key>TmuxVariableWindowSizesSupported</key>
 	<false/>
 	<key>ToolbeltTools</key>
@@ -3704,6 +3716,8 @@
 	<true/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
+	<key>WindowNumber</key>
+	<true/>
 	<key>WorkAroundBigSurBug</key>
 	<true/>
 	<key>findMode_iTerm</key>
