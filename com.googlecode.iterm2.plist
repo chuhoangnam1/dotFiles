@@ -2215,10 +2215,6 @@
 	<string>5CE870D7-A222-4C06-A174-043211DF7C24</string>
 	<key>DisableWindowSizeSnap</key>
 	<true/>
-	<key>EnableDivisionView</key>
-	<true/>
-	<key>EnableProxyIcon</key>
-	<false/>
 	<key>GlobalKeyMap</key>
 	<dict>
 		<key>0x2b-0x120000-0x18</key>
@@ -2363,19 +2359,6 @@
 			<string>n</string>
 			<key>Version</key>
 			<integer>1</integer>
-		</dict>
-		<key>0x50-0x120000-0x23</key>
-		<dict>
-			<key>Action</key>
-			<integer>13</integer>
-			<key>Apply Mode</key>
-			<integer>0</integer>
-			<key>Escaping</key>
-			<integer>2</integer>
-			<key>Text</key>
-			<string></string>
-			<key>Version</key>
-			<integer>2</integer>
 		</dict>
 		<key>0x53-0x120000-0x1</key>
 		<dict>
@@ -3134,8 +3117,6 @@
 			<false/>
 			<key>Shortcut</key>
 			<string></string>
-			<key>Show Mark Indicators</key>
-			<false/>
 			<key>Silence Bell</key>
 			<false/>
 			<key>Sync Title</key>
@@ -3146,8 +3127,6 @@
 			<string>xterm-256color</string>
 			<key>Transparency</key>
 			<real>0.0</real>
-			<key>Unicode Version</key>
-			<integer>9</integer>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -3607,8 +3586,6 @@
 			<false/>
 			<key>Shortcut</key>
 			<string></string>
-			<key>Show Mark Indicators</key>
-			<false/>
 			<key>Silence Bell</key>
 			<false/>
 			<key>Space</key>
@@ -3694,18 +3671,16 @@
 	<false/>
 	<key>StatusBarIcon</key>
 	<false/>
-	<key>StatusBarPosition</key>
-	<integer>0</integer>
 	<key>SwitchTabModifier</key>
 	<integer>9</integer>
 	<key>SwitchWindowModifier</key>
 	<integer>9</integer>
 	<key>TabStyleWithAutomaticOption</key>
-	<integer>4</integer>
+	<integer>6</integer>
 	<key>TerminalMargin</key>
-	<integer>0</integer>
+	<integer>4</integer>
 	<key>TerminalVMargin</key>
-	<integer>2</integer>
+	<integer>4</integer>
 	<key>TmuxVariableWindowSizesSupported</key>
 	<false/>
 	<key>ToolbeltTools</key>
@@ -3716,8 +3691,6 @@
 	<true/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
-	<key>WindowNumber</key>
-	<true/>
 	<key>WorkAroundBigSurBug</key>
 	<true/>
 	<key>findMode_iTerm</key>
