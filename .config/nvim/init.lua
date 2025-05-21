@@ -40,6 +40,7 @@ require('packer').startup(function(use)
   use 'vim-ruby/vim-ruby'
   use 'kana/vim-textobj-user'
   use 'rhysd/vim-textobj-ruby'
+  use 'nelstrom/vim-textobj-rubyblock'
 
   -- Javscript/Typescript development plugins
   use 'pangloss/vim-javascript'
