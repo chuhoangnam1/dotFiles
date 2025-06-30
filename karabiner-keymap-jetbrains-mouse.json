@@ -1,0 +1,49 @@
+{
+    "description": "Mouse button 4/5 to backward/forward in Jetbrains",
+    "manipulators": [
+        {
+            "conditions": [
+                {
+                    "bundle_identifiers": [
+                        "^com\\.jetbrains\\.*"
+                    ],
+                    "type": "frontmost_application_if"
+                }
+            ],
+            "from": {
+                "pointing_button": "button4"
+            },
+            "to": [
+                {
+                    "key_code": "open_bracket",
+                    "modifiers": [
+                        "left_command"
+                    ]
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "conditions": [
+                {
+                    "bundle_identifiers": [
+                        "^com\\.jetbrains\\.*"
+                    ],
+                    "type": "frontmost_application_if"
+                }
+            ],
+            "from": {
+                "pointing_button": "button5"
+            },
+            "to": [
+                {
+                    "key_code": "close_bracket",
+                    "modifiers": [
+                        "left_command"
+                    ]
+                }
+            ],
+            "type": "basic"
+        }
+    ]
+}
