@@ -71,8 +71,6 @@ require('packer').startup(function(use)
 
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
-
-  use 'github/copilot.vim'
 end)
 
 -- Set colorscheme
@@ -80,19 +78,18 @@ vim.opt.termguicolors = true
 vim.cmd [[
   let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
   colorscheme gruvbox
-
-  let g:gruvbox_bold = 1
-  let g:gruvbox_italic = 1
-  let g:gruvbox_contrast_light = 1
 ]]
+vim.g.gruvbox_bold = 1
+vim.g.gruvbox_italic = 1
+vim.g.gruvbox_contrast_light = 1
 
 -- Set basic eyecandy settings
 vim.opt.colorcolumn = '120'
 vim.opt.cursorline = true
 vim.opt.scrolloff = 5
 
--- vim.opt.splitbelow = true
--- vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
 -- Disable spelling by default
 vim.opt.spell = false
@@ -219,8 +216,12 @@ vim.cmd [[
 -- Set grepprg and open quickfix when grep
 vim.cmd [[
   if executable("ag")
-    set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --skip-vcs-ignores\ --column
+    " set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --skip-vcs-ignores\ --column
+    " set grepprg=ag\ --vimgrep\ $*
+    set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --skip-vcs-ignores\ --column\ --vimgrep\ $*
     set grepformat=%f:%l:%c:%m,%f:%l:%m
+
+    " autocmd FileType go set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --skip-vcs-ignores\ --column\ --ignore=*_test.go\
   endif
 ]]
 
