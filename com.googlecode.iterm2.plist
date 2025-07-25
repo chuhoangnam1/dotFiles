@@ -3512,7 +3512,7 @@
 			<key>HotKey Alternate Shortcuts</key>
 			<array/>
 			<key>HotKey Characters</key>
-			<string>æ</string>
+			<string>'</string>
 			<key>HotKey Characters Ignoring Modifiers</key>
 			<string>'</string>
 			<key>HotKey Key Code</key>
@@ -3520,7 +3520,7 @@
 			<key>HotKey Modifier Activation</key>
 			<integer>0</integer>
 			<key>HotKey Modifier Flags</key>
-			<integer>1572864</integer>
+			<integer>1310720</integer>
 			<key>HotKey Window Animates</key>
 			<true/>
 			<key>HotKey Window AutoHides</key>
@@ -3705,7 +3705,7 @@
 	<key>TerminalMargin</key>
 	<integer>0</integer>
 	<key>TerminalVMargin</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>TmuxVariableWindowSizesSupported</key>
 	<false/>
 	<key>ToolbeltTools</key>
