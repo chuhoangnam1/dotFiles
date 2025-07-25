@@ -81,3 +81,5 @@ Makefile.local
 vendor/bundle
 
 .tool-versions
+
+**/.claude/settings.local.json
