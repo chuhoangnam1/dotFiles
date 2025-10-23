@@ -421,7 +421,7 @@ require('mason-lspconfig').setup {
     'gopls',
     'jsonls',
     'ts_ls',
-    'solargraph',
+    'ruby_lsp',
     'rubocop'
   },
 }
@@ -477,6 +477,10 @@ lspconfig.rubocop.setup {
   on_attach = on_attach(),
   capabilities = capabilities,
 }
+-- lspconfig.ruby_lsp.setup {
+--   on_attach = on_attach(),
+--   capabilities = capabilities,
+-- }
 
 local cmp = require 'cmp'
 cmp.setup {
