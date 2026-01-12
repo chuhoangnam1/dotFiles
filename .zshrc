@@ -102,6 +102,7 @@ export PATH="$PATH:$HOME/.local/bin"
 ###############################################################################
 # Setup asdf for runtime version control
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+export ASDF_NODEJS_AUTO_ENABLE_COREPACK=1
 
 export ASDF_GOROOT="$HOME/.asdf/plugins/golang/set-env.zsh"
 [ -s "$ASDF_GOROOT" ] && source "$ASDF_GOROOT"
