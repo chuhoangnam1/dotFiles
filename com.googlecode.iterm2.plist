@@ -3009,7 +3009,7 @@
 			<key>Close Sessions On End</key>
 			<true/>
 			<key>Columns</key>
-			<integer>128</integer>
+			<integer>208</integer>
 			<key>Command</key>
 			<string></string>
 			<key>Cursor Color</key>
@@ -3121,7 +3121,7 @@
 			<key>Right Option Key Sends</key>
 			<integer>0</integer>
 			<key>Rows</key>
-			<integer>42</integer>
+			<integer>54</integer>
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
