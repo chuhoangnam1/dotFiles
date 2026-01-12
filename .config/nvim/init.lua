@@ -330,7 +330,7 @@ vim.cmd [[
 require("nvim-autopairs").setup {}
 
 -- nvim-treesitter
-require'nvim-treesitter.configs'.setup {
+require'nvim-treesitter'.setup {
   ensure_installed = {
     "bash",
     "css",
@@ -444,21 +444,12 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 end
 
-lspconfig.gopls.setup {
+vim.lsp.config("*", { 
   on_attach = on_attach(),
   capabilities = capabilities,
-}
-lspconfig.jsonls.setup {
-  on_attach = on_attach(),
-  capabilities = capabilities,
-}
-lspconfig.ts_ls.setup {
-  on_attach = on_attach(),
-  capabilities = capabilities,
-}
-lspconfig.solargraph.setup {
-  on_attach = on_attach(),
-  capabilities = capabilities,
+})
+
+vim.lsp.config("solargraph", {
   settings = {
     solargraph = {
       autoformat = false,
@@ -472,15 +463,7 @@ lspconfig.solargraph.setup {
       symbols = true
     }
   }
-}
-lspconfig.rubocop.setup {
-  on_attach = on_attach(),
-  capabilities = capabilities,
-}
--- lspconfig.ruby_lsp.setup {
---   on_attach = on_attach(),
---   capabilities = capabilities,
--- }
+})
 
 local cmp = require 'cmp'
 cmp.setup {
