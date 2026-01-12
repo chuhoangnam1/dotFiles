@@ -17,7 +17,8 @@ alias .....="cd ../../../.."
 alias ....="cd ../../.."
 alias ...="cd ../.."
 alias ..="cd .."
-alias ctags='[ -s "./.ignore" ] && ctags -R -a --exclude=@.ignore || ctags -R -a'
+alias ctags='ctags -R -a '
+alias ctagsignore='ctags -R -a --exclude=@.ctagsignore'
 alias dd="dd status='progress'"
 alias diff="colordiff"
 alias du="du -h -d1"
