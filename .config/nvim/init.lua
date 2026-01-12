@@ -59,8 +59,8 @@ require('packer').startup(function(use)
   use 'tpope/vim-endwise'
   use 'windwp/nvim-autopairs'
 
-  use 'williamboman/mason.nvim'
-  use 'williamboman/mason-lspconfig.nvim'
+  use 'mason-org/mason.nvim'
+  use 'mason-org/mason-lspconfig.nvim'
   use 'neovim/nvim-lspconfig'
 
   use 'hrsh7th/cmp-nvim-lsp'
@@ -444,7 +444,7 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 end
 
-vim.lsp.config("*", { 
+vim.lsp.config("*", {
   on_attach = on_attach(),
   capabilities = capabilities,
 })
