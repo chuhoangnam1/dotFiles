@@ -108,6 +108,11 @@ export ASDF_GOROOT="$HOME/.asdf/plugins/golang/set-env.zsh"
 [ -s "$ASDF_GOROOT" ] && source "$ASDF_GOROOT"
 
 ###############################################################################
+# Setup sublime-text cli
+export SUBLIME_TEXT_BIN="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
+[ -s "$SUBLIME_TEXT_BIN" ] && export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+
+###############################################################################
 # ZSH debugging
 if [ -n "${ZSH_DEBUGRC+1}" ]; then
     zprof
