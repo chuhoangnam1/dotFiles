@@ -1,5 +1,10 @@
 # chuhoangnam1 - dotFiles
 
+## Restore dotFiles
+```shell
+stow -R --dotfiles -t $HOME -d . ..
+```
+
 ## Set iTerm2 to read configuration from dotFiles directory
 ```shell
 defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$DOTFILES_DIR/"
