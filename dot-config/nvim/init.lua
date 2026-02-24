@@ -449,21 +449,21 @@ vim.lsp.config("*", {
   capabilities = capabilities,
 })
 
-vim.lsp.config("solargraph", {
-  settings = {
-    solargraph = {
-      autoformat = false,
-      completion = true,
-      diagnostic = false,
-      diagnostics = true,
-      folding = true,
-      formatting = false,
-      references = true,
-      rename = true,
-      symbols = true
-    }
-  }
-})
+-- vim.lsp.config("solargraph", {
+--   settings = {
+--     solargraph = {
+--       autoformat = false,
+--       completion = true,
+--       diagnostic = false,
+--       diagnostics = true,
+--       folding = true,
+--       formatting = false,
+--       references = true,
+--       rename = true,
+--       symbols = true
+--     }
+--   }
+-- })
 
 local cmp = require 'cmp'
 cmp.setup {
