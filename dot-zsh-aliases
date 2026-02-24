@@ -57,6 +57,12 @@ alias config-zsh-aliases="nvim ~/.zsh-aliases"
 
 alias restart-gpg="gpgconf --kill gpg-agent && gpg-connect-agent reloadagent /bye"
 
+# alias start-server="python -m http.server"
+function start-server() {
+  [[ "$#" != 1 ]] && local port="8080"
+  python -m http.server "${port:=$1}"
+}
+
 
 ##############################################################################
 # Tmux & Tmuxinator aliases
