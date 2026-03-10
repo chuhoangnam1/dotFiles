@@ -1,5 +1,5 @@
 {
-  "description": "Quit application by pressing command-q twice",
+  "description": "100 - Quit application by pressing command-q twice",
   "manipulators": [
     {
       "conditions": [
