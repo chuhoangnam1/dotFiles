@@ -422,7 +422,6 @@ require('mason-lspconfig').setup {
     'jsonls',
     'ts_ls',
     'ruby_lsp',
-    'rubocop'
   },
 }
 
