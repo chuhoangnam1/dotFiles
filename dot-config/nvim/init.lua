@@ -12,65 +12,65 @@ vim.cmd [[
 ]]
 
 require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
+  use { 'wbthomason/packer.nvim' }
 
-  use 'gruvbox-community/gruvbox'
+  use { 'gruvbox-community/gruvbox' }
 
-  use 'vim-airline/vim-airline'
-  use 'vim-airline/vim-airline-themes'
+  use { 'vim-airline/vim-airline' }
+  use { 'vim-airline/vim-airline-themes' }
 
-  use 'editorconfig/editorconfig-vim'
+  use { 'editorconfig/editorconfig-vim' }
   use { 'junegunn/fzf', run = function() vim.fn.execute('fzf#install') end }
-  use 'junegunn/fzf.vim'
-  use 'junegunn/vim-peekaboo'
-  use 'scrooloose/nerdtree'
-  use 'tpope/vim-commentary'
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-obsession'
-  use 'tpope/vim-repeat'
-  use 'tpope/vim-surround'
-  use 'milkypostman/vim-togglelist'
+  use { 'junegunn/fzf.vim' }
+  use { 'junegunn/vim-peekaboo' }
+  use { 'scrooloose/nerdtree' }
+  use { 'tpope/vim-commentary' }
+  use { 'tpope/vim-fugitive' }
+  use { 'tpope/vim-obsession' }
+  use { 'tpope/vim-repeat' }
+  use { 'tpope/vim-surround' }
+  use { 'milkypostman/vim-togglelist' }
 
   -- Neovim's Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   -- Ruby development plugins
-  use 'thoughtbot/vim-rspec'
-  use 'tpope/vim-rails'
-  use 'vim-ruby/vim-ruby'
-  use 'kana/vim-textobj-user'
-  use 'rhysd/vim-textobj-ruby'
-  use 'nelstrom/vim-textobj-rubyblock'
+  use { 'thoughtbot/vim-rspec' }
+  use { 'tpope/vim-rails' }
+  use { 'vim-ruby/vim-ruby' }
+  use { 'kana/vim-textobj-user' }
+  use { 'rhysd/vim-textobj-ruby' }
+  use { 'nelstrom/vim-textobj-rubyblock' }
 
   -- Javscript/Typescript development plugins
-  use 'pangloss/vim-javascript'
-  use 'leafgarland/typescript-vim'
-  use 'maxmellon/vim-jsx-pretty'
-  use 'peitalin/vim-jsx-typescript'
-  use 'posva/vim-vue'
-  use 'styled-components/vim-styled-components'
-  use 'jparise/vim-graphql'
+  use { 'pangloss/vim-javascript' }
+  use { 'leafgarland/typescript-vim' }
+  use { 'maxmellon/vim-jsx-pretty' }
+  use { 'peitalin/vim-jsx-typescript' }
+  use { 'posva/vim-vue' }
+  use { 'styled-components/vim-styled-components' }
+  use { 'jparise/vim-graphql' }
 
   -- Golang development plugins
   use { 'fatih/vim-go', run = ':GoUpdateBinaries' }
 
   -- Generic development plugins
-  use 'sheerun/vim-polyglot'
-  use 'tpope/vim-endwise'
-  use 'windwp/nvim-autopairs'
+  use { 'sheerun/vim-polyglot' }
+  use { 'tpope/vim-endwise' }
+  use { 'windwp/nvim-autopairs' }
 
-  use 'mason-org/mason.nvim'
-  use 'mason-org/mason-lspconfig.nvim'
-  use 'neovim/nvim-lspconfig'
+  use { 'mason-org/mason.nvim' }
+  use { 'mason-org/mason-lspconfig.nvim' }
+  use { 'neovim/nvim-lspconfig' }
 
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
+  use { 'hrsh7th/cmp-nvim-lsp' }
+  use { 'hrsh7th/cmp-buffer' }
+  use { 'hrsh7th/cmp-path' }
+  use { 'hrsh7th/cmp-cmdline' }
+  use { 'hrsh7th/nvim-cmp' }
 
-  use 'hrsh7th/cmp-vsnip'
-  use 'hrsh7th/vim-vsnip'
+  use { 'hrsh7th/cmp-vsnip' }
+  use { 'hrsh7th/vim-vsnip' }
 end)
 
 -- Set colorscheme
@@ -87,6 +87,8 @@ vim.g.gruvbox_contrast_light = 1
 vim.opt.colorcolumn = '120'
 vim.opt.cursorline = true
 vim.opt.scrolloff = 5
+
+vim.opt.mouse = ''
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -183,6 +185,7 @@ vim.cmd [[
   autocmd FileType make set autoindent noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
   autocmd FileType proto set autoindent noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
   autocmd FileType ruby set iskeyword+=?
+  autocmd FileType json set formatprg=jq
 ]]
 
 -- quickfix window mappings
