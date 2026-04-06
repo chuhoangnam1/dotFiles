@@ -182,6 +182,8 @@ vim.cmd [[
 -- eyecandy for various filetypes
 vim.cmd [[
   autocmd FileType help set relativenumber
+  autocmd FileType typescript set autoindent noexpandtab softtabstop=2 tabstop=2 shiftwidth=2
+  autocmd FileType javascript set autoindent noexpandtab softtabstop=2 tabstop=2 shiftwidth=2
   autocmd FileType make set autoindent noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
   autocmd FileType proto set autoindent noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
   autocmd FileType ruby set iskeyword+=?
