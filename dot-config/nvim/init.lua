@@ -188,6 +188,7 @@ vim.cmd [[
   autocmd FileType proto set autoindent noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
   autocmd FileType ruby set iskeyword+=?
   autocmd FileType json set formatprg=jq
+  autocmd FileType markdown set wrap
 ]]
 
 -- quickfix window mappings
