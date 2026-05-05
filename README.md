@@ -2,7 +2,7 @@
 
 ## Restore dotFiles
 ```shell
-stow -S --dotfiles -v .
+stow --stow --dotfiles --verbose=2 .
 ```
 
 ## Set iTerm2 to read configuration from dotFiles directory
