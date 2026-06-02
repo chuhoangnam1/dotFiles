@@ -181,14 +181,14 @@ vim.cmd [[
 
 -- eyecandy for various filetypes
 vim.cmd [[
-  autocmd FileType help set relativenumber
-  autocmd FileType typescript set autoindent noexpandtab softtabstop=2 tabstop=2 shiftwidth=2
-  autocmd FileType javascript set autoindent noexpandtab softtabstop=2 tabstop=2 shiftwidth=2
-  autocmd FileType make set autoindent noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
-  autocmd FileType proto set autoindent noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
-  autocmd FileType ruby set iskeyword+=?
-  autocmd FileType json set formatprg=jq
-  autocmd FileType markdown set wrap
+  autocmd FileType help setlocal relativenumber
+  autocmd FileType typescript setlocal autoindent noexpandtab softtabstop=2 tabstop=2 shiftwidth=2
+  autocmd FileType javascript setlocal autoindent noexpandtab softtabstop=2 tabstop=2 shiftwidth=2
+  autocmd FileType make setlocal autoindent noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
+  autocmd FileType proto setlocal autoindent noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
+  autocmd FileType ruby setlocal iskeyword+=?
+  autocmd FileType json setlocal formatprg=jq
+  autocmd FileType markdown setlocal wrap
 ]]
 
 -- quickfix window mappings
