@@ -1,84 +1,21 @@
-# Ghostty config — mirrored from iTerm2 "Default" profile
-# Source: com.googlecode.iterm2.plist (GUID 5CE870D7-A222-4C06-A174-043211DF7C24)
-
-# ── Font ──────────────────────────────────────────────────────────────────
-# iTerm2 used "Monaco 13" (committed once as "MonacoNF 13" for Nerd Font glyphs).
-# Keeping Monaco as primary; chain a Nerd Font so icons in nvim/lazygit render.
+theme = Gruvbox Dark
 font-family = Monaco
-font-family = "Symbols Nerd Font Mono"
 font-size = 13
 adjust-cell-width = 0
-adjust-cell-height = 0
+adjust-cell-height = 1
 
-# ── Window ────────────────────────────────────────────────────────────────
-window-padding-x = 0
+window-padding-x = 8
 window-padding-y = 0
 window-padding-balance = true
 window-padding-color = background
-window-save-state = always
-# iTerm2 had Rows=54, Columns=208 — Ghostty equivalent:
-window-height = 54
-window-width = 208
 
-# ── Colors (extracted from iTerm2 ANSI palette, RGB float → hex) ──────────
-background = #1e1e1e
-foreground = #e6d4a3
-cursor-color = #e6d4a3
-cursor-text  = #1e1e1e
-selection-background = #e6d4a3
-selection-foreground = #524a42
-
-# ANSI 0–7
-palette = 0=#1e1e1e
-palette = 1=#be0f17
-palette = 2=#868715
-palette = 3=#cc881a
-palette = 4=#377375
-palette = 5=#a04b73
-palette = 6=#578e57
-palette = 7=#978771
-# ANSI 8–15 (bright)
-palette = 8=#7f7061
-palette = 9=#f73028
-palette = 10=#aab01d
-palette = 11=#f7b125
-palette = 12=#719586
-palette = 13=#c77089
-palette = 14=#7db669
-palette = 15=#e6d4a3
-
-# ── Cursor ────────────────────────────────────────────────────────────────
-# iTerm2: Blinking Cursor = false
 cursor-style = block
 cursor-style-blink = false
+shell-integration-features = no-cursor
 
-# ── Scrollback / Bell ─────────────────────────────────────────────────────
-# iTerm2: Scrollback Lines = 9_999_999. Ghostty uses bytes; ~100MB is generous.
-scrollback-limit = 100000000
-# iTerm2: Visual Bell = true, Silence Bell = false
-audible-bell = false
-visual-bell = true
-
-# ── Input / macOS ─────────────────────────────────────────────────────────
-# iTerm2 "Option Key Sends = 0" (Normal). Ghostty equivalent: do NOT remap.
-macos-option-as-alt = false
-mouse-hide-while-typing = true
-copy-on-select = clipboard
+copy-on-select = false
 confirm-close-surface = false
+macos-shortcuts = deny
+macos-titlebar-style = tabs
 
-# ── Shell ─────────────────────────────────────────────────────────────────
-shell-integration = detect
-shell-integration-features = cursor,sudo,title
-working-directory = home
-
-# ── Misc parity with iTerm2 defaults ──────────────────────────────────────
-# Terminal Type xterm-256color is Ghostty's default; nothing to set.
-# Transparency=0, Blur=false → leave background-opacity unset (1.0).
-# Disable Window Resizing=true — Ghostty has no exact equivalent; omitted.
-
-# ── Keybinds (sensible macOS defaults; uncomment to customize) ────────────
-# Ghostty already provides cmd+t/n/w, cmd+c/v, cmd+plus/minus, cmd+0 by default.
-# keybind = cmd+d=new_split:right
-# keybind = cmd+shift+d=new_split:down
-# keybind = cmd+]=goto_split:next
-# keybind = cmd+[=goto_split:previous
+scrollback-limit = 9999999
