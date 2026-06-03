@@ -19,3 +19,6 @@ macos-shortcuts = deny
 macos-titlebar-style = tabs
 
 scrollback-limit = 9999999
+
+# Remap option-backspace to delete whole word
+keybind = option+backspace=text:\x17
