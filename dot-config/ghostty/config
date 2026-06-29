@@ -16,46 +16,20 @@ shell-integration-features = no-cursor
 copy-on-select = false
 confirm-close-surface = false
 macos-shortcuts = deny
-# macos-titlebar-style = tabs
+macos-titlebar-style = tabs
 
 quick-terminal-size = 80%,80%
 scrollback-limit = 9999999
 window-save-state = always
 
+working-directory = home
+
 # Remap option-backspace to delete whole word
 keybind = option+backspace=text:\x17
-# keybind = cmd+backslash=new_split:right
-# keybind = cmd+shift+backslash=new_split:down
-keybind = cmd+backslash=unbind
-keybind = cmd+shift+backslash=unbind
+keybind = cmd+backslash=new_split:right
+keybind = cmd+shift+backslash=new_split:down
+# keybind = cmd+backslash=ignore
+# keybind = cmd+shift+backslash=ignore
 
 keybind = global:cmd+ctrl+'=toggle_quick_terminal
 
-# # tmux prefix-less bindings (M-key)
-# keybind = cmd+r=text:\x1br
-# keybind = cmd+d=text:\x1bd
-# keybind = cmd+s=text:\x1bs
-# keybind = cmd+v=text:\x1bv
-# keybind = cmd+n=text:\x1bn
-# keybind = cmd+[=text:\x1b[
-# keybind = cmd+]=text:\x1b]
-# keybind = cmd+h=text:\x1bh
-# keybind = cmd+j=text:\x1bj
-# keybind = cmd+k=text:\x1bk
-# keybind = cmd+l=text:\x1bl
-# keybind = cmd+shift+[=text:\x1b{
-# keybind = cmd+shift+]=text:\x1b}
-# keybind = cmd+1=text:\x1b1
-# keybind = cmd+2=text:\x1b2
-# keybind = cmd+3=text:\x1b3
-# keybind = cmd+4=text:\x1b4
-# keybind = cmd+5=text:\x1b5
-# keybind = cmd+6=text:\x1b6
-# keybind = cmd+7=text:\x1b7
-# keybind = cmd+8=text:\x1b8
-# keybind = cmd+9=text:\x1b9
-# keybind = cmd+/=text:\x1b/
-# keybind = cmd+x=text:\x1bx
-# keybind = cmd+shift+x=text:\x1bX
-# keybind = cmd+q=text:\x1bq
-# keybind = cmd+c=text:\x1bc
